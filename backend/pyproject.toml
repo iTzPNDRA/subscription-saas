@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "subscription_tracker"
+version = "0.1.0"
+description = ""
+authors = ["You <you@example.com>"]
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.110"
+uvicorn = { extras = ["standard"], version = "^0.29" }
+sqlmodel = "^0.0.16"
+python-jose = {extras=["cryptography"], version="^3.3.0"}
+passlib = {extras=["bcrypt"], version="^1.7.4"}
+pydantic = {extras=["email"], version="^2.7"}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
