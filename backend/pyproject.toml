@@ -3,16 +3,26 @@ name = "subscription_tracker"
 version = "0.1.0"
 description = ""
 authors = ["You <you@example.com>"]
-packages = [{include = "app"}]
+packages = [{ include = "app" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
-fastapi = "^0.110"
+
+# ▶ FastAPI-Stack (Pydantic v1-basierend, bewährte Kombi)
+fastapi = "0.109.2"                       # letzte Version vor Pydantic-v2-Umstieg
+pydantic = { extras = ["email"], version = "1.10.14" }
+
+# ▶ Auth-Bibliotheken (passen zu FastAPI-Users 11)
+fastapi-users = { extras = ["sqlalchemy"], version = "11.0.3" }
+fastapi-users-db-sqlmodel = "0.3.0"
+
+# ▶ weitere Abhängigkeiten
 uvicorn = { extras = ["standard"], version = "^0.29" }
 sqlmodel = "^0.0.16"
-python-jose = {extras=["cryptography"], version="^3.3.0"}
-passlib = {extras=["bcrypt"], version="^1.7.4"}
-pydantic = {extras=["email"], version="^2.7"}
+python-jose = { extras = ["cryptography"], version = "^3.3.0" }
+passlib = { extras = ["bcrypt"], version = "^1.7.4" }
+
+# (kein pydantic-settings nötig, da wir Pydantic v1 nutzen)
 
 [build-system]
 requires = ["poetry-core"]

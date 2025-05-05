@@ -1,6 +1,6 @@
 FROM node:20
 WORKDIR /usr/src/app
-COPY frontend/package*.json ./
-RUN npm ci
-COPY frontend .
+COPY package*.json ./
+RUN npm install
+COPY . .
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
